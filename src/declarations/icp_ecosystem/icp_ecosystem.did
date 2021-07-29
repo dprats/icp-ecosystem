@@ -1,0 +1,36 @@
+type Epoch_String = text;
+service : {
+  get_all_canister_stats: () -> (vec record {
+                                       Epoch_String;
+                                       nat;
+                                     }) query;
+  get_all_dfinity_grants_approved_stats: () ->
+   (vec record {
+          Epoch_String;
+          nat;
+        }) query;
+  get_all_dfinity_grants_submmitted_stats: () ->
+   (vec record {
+          Epoch_String;
+          nat;
+        }) query;
+  get_all_members_on_forum_stats: () ->
+   (vec record {
+          Epoch_String;
+          nat;
+        }) query;
+  get_all_motoko_repos_stats: () -> (vec record {
+                                           Epoch_String;
+                                           nat;
+                                         }) query;
+  insert_canister_stats: (Epoch_String, nat) -> ();
+  insert_dfinity_application_grants_submmitted_stats: (Epoch_String, 
+   nat) -> ();
+  insert_members_on_forum_stats: (Epoch_String, nat) -> ();
+  insert_motoko_repos_stats: (Epoch_String, nat) -> ();
+  lookup_canister_stats: (Epoch_String) -> (opt nat) query;
+  lookup_dfinity_grants_approved_stats: (Epoch_String) -> (opt nat) query;
+  lookup_dfinity_grants_submmitted_stats: (Epoch_String) -> (opt nat) query;
+  lookup_members_on_forum_stats: (Epoch_String) -> (opt nat) query;
+  lookup_motoko_repos_stats: (Epoch_String) -> (opt nat) query;
+}
