@@ -1,24 +1,13 @@
-# icp_ecosystem
+# Internet Computer: Ecosystem Stats
 
-Welcome to your new icp_ecosystem project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+This is a WIP open source canister which will contain stats for the adoption of the Internet Computer so other apps can query and use the data.
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
+Data Available in the this canister:
 
-To learn more before you start working with icp_ecosystem, see the following documentation available online:
-
-- [Quick Start](https://sdk.dfinity.org/docs/quickstart/quickstart-intro.html)
-- [SDK Developer Tools](https://sdk.dfinity.org/docs/developers-guide/sdk-guide.html)
-- [Motoko Programming Language Guide](https://sdk.dfinity.org/docs/language-guide/motoko.html)
-- [Motoko Language Quick Reference](https://sdk.dfinity.org/docs/language-guide/language-manual.html)
-- [JavaScript API Reference](https://erxue-5aaaa-aaaab-qaagq-cai.raw.ic0.app)
-
-If you want to start working on your project right away, you might want to try the following commands:
-
-```bash
-cd icp_ecosystem/
-dfx help
-dfx config --help
-```
+- Canisters deployed to the IC: https://ic.rocks/charts/canisters
+- Motoko repos on Github
+- Members on developer forum: https://forum.dfinity.org/
+- Grants submitted to the DFINITY foundation: https://dfinity.org/grants/
 
 ## Running the project locally
 
