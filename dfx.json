@@ -1,0 +1,35 @@
+{
+  "canisters": {
+    "icp_ecosystem": {
+      "main": "src/icp_ecosystem/main.mo",
+      "type": "motoko"
+    },
+    "icp_ecosystem_assets": {
+      "dependencies": [
+        "icp_ecosystem"
+      ],
+      "frontend": {
+        "entrypoint": "src/icp_ecosystem_assets/src/index.html"
+      },
+      "source": [
+        "src/icp_ecosystem_assets/assets",
+        "dist/icp_ecosystem_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.8.0",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
