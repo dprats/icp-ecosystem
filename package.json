@@ -28,9 +28,9 @@
     "stream-browserify": "3.0.0",
     "terser-webpack-plugin": "5.1.1",
     "util": "0.12.3",
-    "webpack-cli": "4.5.0",
-    "webpack-dev-server": "^3.11.2",
-    "webpack": "5.24.4"
+    "webpack": "^5.24.4",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "browserslist": [
     "last 2 chrome version",
@@ -39,8 +39,19 @@
     "last 2 edge version"
   ],
   "dependencies": {
+    "@devexpress/dx-react-chart": "^2.7.6",
+    "@devexpress/dx-react-chart-material-ui": "^2.7.6",
+    "@devexpress/dx-react-core": "^2.7.6",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@fontsource/roboto": "^4.5.0",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/lab": "4.0.0-alpha.57",
+    "@material-ui/icons": "^4.11.2",
+    "material-ui-icons": "^1.0.0-beta.36",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "recharts": "^2.0.10",
     "ts-loader": "^9.2.4",
     "typescript": "^4.3.5"
   }
