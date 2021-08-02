@@ -2,16 +2,322 @@ import * as React from "react";
 import { render } from "react-dom";
 import { icp_ecosystem } from "../../declarations/icp_ecosystem";
 
+
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+
+import {
+  Drawer, List, ListItem,
+  ListItemIcon, ListItemText,
+  Container, Typography,
+} from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles'; //for the drawer
+import clsx from 'clsx'; //for the drawer
+import { makeStyles } from '@material-ui/core/styles'; //for the drawer
+import Drawer from '@material-ui/core/Drawer'; //for the drawer
+import List from '@material-ui/core/List'; //for the drawer
+import Divider from '@material-ui/core/Divider'; //for the drawer
+import IconButton from '@material-ui/core/IconButton'; //for the drawer
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'; //for the drawer
+import { mainListItems, secondaryListItems } from './listItems'; //for the drawer
+import HomeIcon from "@material-ui/icons/Home"; //for the drawer
+import InfoIcon from '@material-ui/icons/Info'; //for the drawer
+import Toolbar from '@material-ui/core/Toolbar';
+import MenuIcon from '@material-ui/icons/Menu';
+import Badge from '@material-ui/core/Badge';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import Chart from './Chart';
+import Updates from './Updates';
+import Box from '@material-ui/core/Box';
+import AppBar from '@material-ui/core/AppBar';
+
+//Icons used in the drawer
+import DeveloperModeIcon from '@material-ui/icons/DeveloperMode';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
+import AppsIcon from '@material-ui/icons/Apps';
+import PeopleIcon from '@material-ui/icons/People';
+
+
+
+
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch, Route, Link
+} from "react-router-dom";
+
+
 //Material UI Components
-import Dashboard from './Dashboard';
+import CanisterDashboard from './CanisterDashboard';
+import MotokoReposDashboard from './MotokoReposDashboard';
+import GrantsSubmittedDashboard from './GrantsSubmittedDashboard';
+import GrantsApprovedDashboard from './GrantsApprovedDashboard';
+
+import AppBarComponent from './AppBarComponent';
+// import DrawerComponent from './DrawerComponent';
+
+//Styles for drawer 
+const drawerWidth = 240;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  toolbar: {
+    paddingRight: 24, // keep right padding when drawer closed
+  },
+  toolbarIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  menuButtonHidden: {
+    display: 'none',
+  },
+  title: {
+    flexGrow: 1,
+  },
+  drawerPaper: {
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawerPaperClose: {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7),
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9),
+    },
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto',
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
+  fixedHeight: {
+    height: 240,
+  },
+}));
+
+
 
 const MyApp = () => {
 
+  const classes = useStyles();
+    const [open, setOpen] = React.useState(true);
+    const handleDrawerOpen = () => {
+      setOpen(true);
+    };
+    const handleDrawerClose = () => {
+      setOpen(false);
+    };
+    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+
   return (
-      <div>
-        <Dashboard />
-      </div>
+      <Router>
+
+        <div className={classes.root}>
+              <CssBaseline />
+
+              {/* Appbar  */}
+              <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+                <Toolbar className={classes.toolbar}>
+                  <IconButton
+                    edge="start"
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawerOpen}
+                    className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                    Internet Computer Ecosystem Metrics
+                  </Typography>
+                 
+                </Toolbar>
+              </AppBar>
+
+              {/* Drawer  */}
+              <Drawer
+                variant="permanent"
+                classes={{
+                  paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+                }}
+                open={open}
+              >
+                <div className={classes.toolbarIcon}>
+                  <IconButton onClick={handleDrawerClose}>
+                    <ChevronLeftIcon />
+                  </IconButton>
+                </div>
+
+                
+                <List>
+
+                <Link to="/">
+                    <ListItem button>
+                      <ListItemIcon>
+                        <HomeIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Home" />
+                    </ListItem>
+                </Link>
+
+                <Link to="/canisters">
+                    <ListItem button>
+                      <ListItemIcon>
+                        <AppsIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Canisters" />
+                    </ListItem>
+                </Link>
+
+                {/* Canister button link  */}
+                <Link to="/motoko-repos">
+                  <ListItem button>
+                    <ListItemIcon>
+                      <DeveloperModeIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Motoko repos" />
+                  </ListItem>
+                </Link>
+
+                <Link to="/developers-forum">
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PeopleIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Developers on Forum" />
+                  </ListItem>
+                </Link>
+
+                <Link to="/grants-submitted">
+                  <ListItem button>
+                    <ListItemIcon>
+                      <AllInclusiveIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Grants Submitted" />
+                  </ListItem>
+                </Link>
+
+                <Link to="/grants-approved">
+                  <ListItem button>
+                    <ListItemIcon>
+                      <AllInclusiveIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Grants Approved" />
+                  </ListItem>
+                </Link>
+
+                
+                </List>
+
+
+              </Drawer>
+
+              <Switch>
+                
+                  <Route exact path="/">
+                    <Container>
+                      <Typography variant="h3" gutterBottom>
+                        Home
+                      </Typography>
+                      <Typography variant="body1" gutterBottom>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                      </Typography>
+                    </Container>
+                  </Route>
+
+                  <Route exact path="/canisters">
+                    <Container>
+                      Canisters
+                      <CanisterDashboard />
+
+                    </Container>
+                  </Route>
+
+                  <Route exact path="/motoko-repos">
+                    Motoko repos
+                    <MotokoReposDashboard />
+                  </Route>
+
+                  <Route exact path="/developers-forum">
+                    Developers Forum
+                    <MotokoReposDashboard />
+                  </Route>
+
+                  <Route exact path="/grants-submitted">
+                    Grants submitted
+                    <GrantsSubmittedDashboard />
+                  </Route>
+
+                  <Route exact path="/grants-approved">
+                    Grants Approved
+                    <GrantsApprovedDashboard />
+                  </Route>
+
+                </Switch>
+            </div>
+     </Router>
     );
 };
 
 render(<MyApp />, document.getElementById("app"));
+
+
+
+
+
+////DUMMY FUNCTIONS
+
+function Home() {
+  return (
+    <div>
+      <h2>Home</h2>
+    </div>
+  );
+}

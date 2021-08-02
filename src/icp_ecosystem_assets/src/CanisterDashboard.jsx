@@ -2,22 +2,31 @@ import * as React from "react";
 import { render } from "react-dom";
 import { icp_ecosystem } from "../../declarations/icp_ecosystem";
 
+//Routing
+import {
+  BrowserRouter as Router,
+  Switch, Route, Link
+} from "react-router-dom";
+
 
 //Material UI Components
+
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+
+
+
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import Chart from './Chart';
 import Updates from './Updates';
+// import AppBarComponent from './AppBarComponent';
 import DrawerComponent from './DrawerComponent';
-
-
 
 const drawerWidth = 240;
 
@@ -101,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Dashboard() {
+export default function CanisterDashboard() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
@@ -116,20 +125,21 @@ export default function Dashboard() {
       <div className={classes.root}>
         <CssBaseline />
         
-        <DrawerComponent />
+        {/* <DrawerComponent /> */}
 
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>
+
+            <h2>Canister Dashboard</h2>
+
             <Grid container spacing={3}>
-              
-              {/* Generic Chart */}
+              {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper className={fixedHeightPaper}>
                   <Chart />
                 </Paper>
               </Grid>
-
               {/* Recent Updates */}
               <Grid item xs={12}>
                 <Paper className={classes.paper}>

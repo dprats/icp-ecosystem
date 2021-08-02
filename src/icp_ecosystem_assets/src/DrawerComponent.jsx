@@ -1,21 +1,23 @@
 import * as React from "react";
 import { render } from "react-dom";
-import { icp_ecosystem } from "../../declarations/icp_ecosystem";
-
 
 //Material UI Components
-import { Container } from '@material-ui/core';
+
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
-import Chart from './Chart';
-import Updates from './Updates';
-import DrawerComponent from './DrawerComponent';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { mainListItems, secondaryListItems } from './listItems';
+
+
+
+
+//Import components locally 
+import { mainListItems, secondaryListItems } from './listItems';
 
 
 
@@ -101,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Dashboard() {
+export default function DrawerComponent() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
@@ -114,32 +116,26 @@ export default function Dashboard() {
   
     return (
       <div className={classes.root}>
-        <CssBaseline />
         
-        <DrawerComponent />
 
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <Container maxWidth="lg" className={classes.container}>
-            <Grid container spacing={3}>
-              
-              {/* Generic Chart */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper className={fixedHeightPaper}>
-                  <Chart />
-                </Paper>
-              </Grid>
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+          }}
+          open={open}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerClose}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
+          <Divider />
+            <List>{mainListItems}</List>
+          <Divider />
+          <List>{secondaryListItems}</List>
+        </Drawer>
 
-              {/* Recent Updates */}
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
-                  <Updates />
-                </Paper>
-              </Grid>
-            </Grid>
-          
-          </Container>
-        </main>
       </div>
     );
   }
