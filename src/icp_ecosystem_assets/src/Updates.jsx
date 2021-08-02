@@ -50,7 +50,9 @@ export default function Updates() {
             <TableRow key={row.id}>
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.name}</TableCell>
-              <TableCell>{row.principal}</TableCell>
+              <TableCell>
+                <a href={ 'https://ic.rocks/principal/' + row.principal}> Principal</a>
+                </TableCell>
               <TableCell align="right">{row.amount}</TableCell>
             </TableRow>
           ))}
