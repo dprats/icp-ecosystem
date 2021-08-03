@@ -270,8 +270,9 @@ const MyApp = () => {
                 
                   <Route exact path="/">
                     <Container>
+                      <img src="logo.png" alt="DFINITY logo" />
                       <Typography variant="h3" gutterBottom>
-                        Home
+                        Introduction
                       </Typography>
                       <Typography variant="body1" gutterBottom>
                         This page is a community-managed dashboard of some simple metrics around community adoption of the Internet Computer. 
@@ -284,9 +285,9 @@ const MyApp = () => {
                         For the sake of transparency and composability, 
                         <br />
                         <br />
-                        1. the frontend and backend code is availale 
+                        1. Frontend and backend code is availale 
                         <br />
-                        2. data that fuels this website is available through a public API so anybody in the community can query it.
+                        2. Data that fuels this website is available through a public API so anybody in the community can query it.
                         <br />
                         <br />
                         <br />
