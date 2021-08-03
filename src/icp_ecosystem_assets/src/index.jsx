@@ -274,7 +274,24 @@ const MyApp = () => {
                         Home
                       </Typography>
                       <Typography variant="body1" gutterBottom>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        This page is a community-managed dashboard of some simple metrics around community adoption of the Internet Computer. 
+                        Some of these metrics are on-chain (like Canisters created) and others are off-chain (like # of motoko repos on Github). 
+                        The Intent of this page is to give human-level visibility, a dashboard, for the community.
+
+                        <br />
+                        <br />
+                        <br />
+                        For the sake of transparency and composability, 
+                        <br />
+                        <br />
+                        1. the frontend and backend code is availale 
+                        <br />
+                        2. data that fuels this website is available through a public API so anybody in the community can query it.
+                        <br />
+                        <br />
+                        <br />
+                        You can read more in the <Link to="/documentation">documentation</Link> section. 
+
                       </Typography>
                     </Container>
                   </Route>

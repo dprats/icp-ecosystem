@@ -2,12 +2,6 @@ import * as React from "react";
 import { render } from "react-dom";
 import { icp_ecosystem } from "../../declarations/icp_ecosystem";
 
-//Routing
-import {
-  BrowserRouter as Router,
-  Switch, Route, Link
-} from "react-router-dom";
-
 
 //Material UI Components
 
@@ -109,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//Get Canister Data
+//Get Canister Data from the IC
 const getCanisterData = async () => {
   console.log("calling canister data from dashboard component");
   const data = await icp_ecosystem.get_all_canister_stats();
