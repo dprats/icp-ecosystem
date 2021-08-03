@@ -276,13 +276,16 @@ const MyApp = () => {
                       </Typography>
                       <Typography variant="body1" gutterBottom>
                         This page is a community-managed dashboard of some simple metrics around community adoption of the Internet Computer. 
-                        Some of these metrics are on-chain (like Canisters created) and others are off-chain (like # of motoko repos on Github). 
-                        The Intent of this page is to give human-level visibility, a dashboard, for the community.
+                        Some of these metrics are on-chain (e.g. <Link to="/canisters">canisters created</Link> created) and others are off-chain (e.g. <Link to="/motoko-repos">motoko repos</Link> on Github). 
+                        
+                        <h2>The Intent</h2>
+                        The intent of this page is to give human-level visibility, a dashboard, for the community.
 
                         <br />
-                        <br />
-                        <br />
-                        For the sake of transparency and composability, 
+            
+                        <h2>Transparency</h2>
+                        One of the cool things about writing smart contract canisters, is that you get an outward-facing public API for free so 
+                        for the sake of transparency and composability, you can use the same data that powers this web app. You will fins the following:
                         <br />
                         <br />
                         1. Frontend and backend code is availale 
