@@ -274,7 +274,9 @@ const MyApp = () => {
                       <Typography variant="h3" gutterBottom>
                         Introduction
                       </Typography>
-                      <Typography variant="body1" gutterBottom>
+                      
+                      {/* Change component to span as per: https://stackoverflow.com/questions/41928567/div-cannot-appear-as-a-descendant-of-p */}
+                      <Typography component={'span'} variant="body1" gutterBottom>
                         This page is a community-managed dashboard of some simple metrics around community adoption of the Internet Computer. 
                         Some of these metrics are on-chain (e.g. <Link to="/canisters">canisters created</Link> created) and others are off-chain (e.g. <Link to="/motoko-repos">motoko repos</Link> on Github). 
                         

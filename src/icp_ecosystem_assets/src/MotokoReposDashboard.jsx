@@ -105,10 +105,13 @@ const getMotokoReposData = async () => {
   console.log("calling motoko repo data from dashboard component");
   const data = await icp_ecosystem.get_all_motoko_repos_stats();
   console.log(data);
+  return data;
 }
 
 
 export default function MotokoReposDashboard() {
+
+
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
@@ -120,7 +123,7 @@ export default function MotokoReposDashboard() {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   
     //query data from the Canister on the IC
-    getMotokoReposData();
+    const chartData = getMotokoReposData();
 
     return (
       <div className={classes.root}>
@@ -139,7 +142,7 @@ export default function MotokoReposDashboard() {
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper className={fixedHeightPaper}>
-                  <Chart />
+                  <Chart data={chartData}/>
                 </Paper>
               </Grid>
               {/* Recent Updates */}

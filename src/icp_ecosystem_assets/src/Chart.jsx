@@ -20,8 +20,12 @@ const data = [
   createData('24:00', undefined),
 ];
 
-export default function Chart() {
+export default function Chart(props) {
   const theme = useTheme();
+
+  console.log("printing from props in chart");
+  console.log(props.data);
+
 
   return (
     <React.Fragment>
