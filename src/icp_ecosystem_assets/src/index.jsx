@@ -296,6 +296,16 @@ const MyApp = () => {
                         <br />
                         You can read more in the <Link to="/documentation">documentation</Link> section. 
 
+                        <h2>Related Projects</h2>
+                        <ul>
+                          <li><a href="https://dashboard.internetcomputer.org/">Internet Computer Dashboard</a></li>
+                          <li><a href="https://ic.rocks/">ic.rocks</a></li>
+                          <li><a href="https://www.dfinityexplorer.org/#/">Dfinity Explorer</a></li>
+                          <li><a href="https://dfinity.org/showcase"> IC showcase apps</a></li>
+                          <li><a href="https://github.com/dfinity/awesome-dfinity">Awesome Dfinity</a></li>
+                        </ul>
+      
+                        
                       </Typography>
                     </Container>
                   </Route>
