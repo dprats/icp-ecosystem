@@ -29,10 +29,14 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import AppBar from '@material-ui/core/AppBar';
+
+
+//Custom-made components
 import Chart from './Chart';
 import Updates from './Updates';
 import Box from '@material-ui/core/Box';
-import AppBar from '@material-ui/core/AppBar';
+import Documentation from './Documentation';
 
 //Icons used in the drawer
 import DeveloperModeIcon from '@material-ui/icons/DeveloperMode';
@@ -143,7 +147,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 const MyApp = () => {
 
   const classes = useStyles();
@@ -155,7 +158,6 @@ const MyApp = () => {
       setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
 
   return (
       <Router>
@@ -312,7 +314,8 @@ const MyApp = () => {
                   </Route>
 
                   <Route exact path="/documentation">
-                    Documentation
+                    <Container>
+                    {/* Documentation
                     <div style={{ "fontSize": "30px" }}>
                       <img src="logo.png" alt="DFINITY logo" />
 
@@ -326,7 +329,9 @@ const MyApp = () => {
                               <a href="https://github.com/dprats/ecosystem_stats">Review the code</a>
                           </li>
                       </ul>
-                    </div>
+                    </div> */}
+                    <Documentation />
+                    </Container>    
                   </Route>
 
 

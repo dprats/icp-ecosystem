@@ -100,6 +100,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//Get Motoko Repos Data
+const getMotokoReposData = async () => {
+  console.log("calling motoko repo data from dashboard component");
+  const data = await icp_ecosystem.get_all_motoko_repos_stats();
+  console.log(data);
+}
+
 
 export default function MotokoReposDashboard() {
     const classes = useStyles();
@@ -112,6 +119,9 @@ export default function MotokoReposDashboard() {
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   
+    //query data from the Canister on the IC
+    getMotokoReposData();
+
     return (
       <div className={classes.root}>
         <CssBaseline />
