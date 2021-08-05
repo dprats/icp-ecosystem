@@ -103,15 +103,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//Get Canister Data from the IC
-const getCanisterData = async () => {
-  console.log("calling canister data from dashboard component");
-  const data = await icp_ecosystem.get_all_canister_stats();
-  console.log(data);
-}
-
-
-
 
 export default function CanisterDashboard() {
     const classes = useStyles();
@@ -124,9 +115,7 @@ export default function CanisterDashboard() {
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-    //query the canister data from the canister on the IC
-    getCanisterData();
-  
+
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -143,7 +132,7 @@ export default function CanisterDashboard() {
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper className={fixedHeightPaper}>
-                  <Chart />
+                  <Chart chartType="canisters"/>
                 </Paper>
               </Grid>
               {/* Recent Updates */}

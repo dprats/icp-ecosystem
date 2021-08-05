@@ -1,6 +1,5 @@
 import * as React from "react";
 import { render } from "react-dom";
-import { icp_ecosystem } from "../../declarations/icp_ecosystem";
 
 //Material UI Components
 
@@ -14,10 +13,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import Chart from './Chart';
 import Updates from './Updates';
-import DrawerComponent from './DrawerComponent';
 
 const drawerWidth = 240;
 
@@ -100,15 +97,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//Get Motoko Repos Data
-const getMotokoReposData = async () => {
-  console.log("calling motoko repo data from dashboard component");
-  const data = await icp_ecosystem.get_all_motoko_repos_stats();
-  console.log(data);
-  return data;
-}
-
-
 export default function MotokoReposDashboard() {
 
 
@@ -121,9 +109,6 @@ export default function MotokoReposDashboard() {
       setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  
-    //query data from the Canister on the IC
-    const chartData = getMotokoReposData();
 
     return (
       <div className={classes.root}>
@@ -142,7 +127,7 @@ export default function MotokoReposDashboard() {
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper className={fixedHeightPaper}>
-                  <Chart data={chartData}/>
+                  <Chart chartType="motokoRepos"/>
                 </Paper>
               </Grid>
               {/* Recent Updates */}
