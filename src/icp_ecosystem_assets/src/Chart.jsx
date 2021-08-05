@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from './Title';
 import { icp_ecosystem } from "../../declarations/icp_ecosystem";
 import Button from '@material-ui/core/Button';
-import moment from 'moment'
-
+import moment from 'moment';
 
 
 // Generate Sales Data
@@ -42,6 +41,13 @@ export default function Chart(props) {
     setChartData(dataFormattedForChart);
   }
 
+  useEffect(() => {
+    // Update the document title using the browser API
+    // document.title = `You clicked ${count} times`;
+    console.log("component did mount");
+    console.log("component did mount: callGetCanisterData");
+    getCanisterData();
+  },[chartData]);
 
 
   return (
