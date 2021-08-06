@@ -57,7 +57,11 @@ actor {
  dfinity_application_grants_submmitted_stats.put("1626739201", 207); // July 20, 2021 12:01 AM
  dfinity_application_grants_submmitted_stats.put("1627344060", 216); // July 27, 2021 12:01 AM
 
+ dfinity_application_grants_submmitted_stats.put("1625529601", 10); // July 6, 2021 12:01 AM
+ dfinity_application_grants_submmitted_stats.put("1626134401", 20); // July 13, 2021 12:01 AM
+ dfinity_application_grants_submmitted_stats.put("1626739201", 30); // July 20, 2021 12:01 AM
  dfinity_application_grants_approved_stats.put("1627344060", 52); // July 27, 2021 12:01 AM
+
 
   //2. Methods
 

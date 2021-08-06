@@ -29,30 +29,76 @@ export default function Chart(props) {
   const theme = useTheme();
   const [chartData, setChartData] = useState(['',0]);
 
+
+  //Helper methods to fetch the data from the Canister
   async function getCanisterData () {
     console.log("calling canister data from chart component");
     const data = await icp_ecosystem.get_all_canister_stats ();
-    console.log("got data from getCanisterData...");
-    console.log(data);
-    console.log("formatting data...");
     const dataFormattedForChart = formatDataForChart(data);
-    console.log("formatting data...");
+    setChartData(dataFormattedForChart);
+  }
+
+  async function getMotokoReposData () {
+    console.log("calling canister data from motoko Repos component");
+    const data = await icp_ecosystem.get_all_motoko_repos_stats();
+    const dataFormattedForChart = formatDataForChart(data);
+    setChartData(dataFormattedForChart);
+  }
+
+  async function getCanisterData () {
+    console.log("calling canister data from chart component");
+    const data = await icp_ecosystem.get_all_canister_stats ();
+    const dataFormattedForChart = formatDataForChart(data);
+    setChartData(dataFormattedForChart);
+  }
+
+  async function getGrantsSubmitted() {
+    console.log("calling canister data from grants submitted");
+    const data = await icp_ecosystem.get_all_dfinity_grants_submmitted_stats ();
+    const dataFormattedForChart = formatDataForChart(data);
+    setChartData(dataFormattedForChart);
+  }
+
+  async function getGrantsApproved() {
+    console.log("calling canister data from grants approved");
+    const data = await icp_ecosystem.get_all_dfinity_grants_approved_stats ();
+    const dataFormattedForChart = formatDataForChart(data);
     console.log(dataFormattedForChart);
     setChartData(dataFormattedForChart);
   }
 
+
+
+  //UseEffect is used to kickstart a request to fetch the data which is the passed
+  //via setChartData() to ChartData methos in the <LineChart /> component 
   useEffect(() => {
-    // Update the document title using the browser API
-    // document.title = `You clicked ${count} times`;
-    console.log("component did mount");
-    console.log("component did mount: callGetCanisterData");
-    getCanisterData();
-  },[chartData]);
+    switch (props.chartType) {
+      case 'canisters': {
+        getCanisterData();
+        break;
+      }
+      case 'motokoRepos': {
+        getMotokoReposData();
+        break;
+      }
+      case 'grantsSubmitted': {
+        getGrantsSubmitted();
+        break;
+      }
+      case 'grantsApproved': {
+        getGrantsApproved();
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  },[]);
 
 
   return (
     <React.Fragment>
-      <Button variant="contained" onClick={getCanisterData}>Get Chart Data!</Button>
+      {/* <Button variant="contained" onClick={getCanisterData}>Get Chart Data!</Button> */}
 
       <Title>Today</Title>
 
@@ -103,7 +149,7 @@ const formatDataForChart = (arrayOfArrays) =>{
     //rechart takes an "time" and "value" data so these variable names are deliberately chosen
     const timeInSeconds = Number(arr[0]); 
     const time = timeInSeconds * 1000; // new Date() takes milliseconds
-    console.log(` Evaluating time: ${time}`);
+    // console.log(` Evaluating time: ${time}`);
     const amount = Number(arr[1]);
     return { time, amount };
   })

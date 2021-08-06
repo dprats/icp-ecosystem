@@ -129,7 +129,7 @@ export default function GrantsSubmittedDashboard() {
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper className={fixedHeightPaper}>
-                  <Chart />
+                  <Chart chartType="grantsSubmitted"/>
                 </Paper>
               </Grid>
               {/* Recent Updates */}
